@@ -1,3 +1,22 @@
+## I had to make the following changes
+```bash
+conda create -n samenv python=3.6 -y
+conda activate samenv
+sudo apt-get install -y python3-opencv ca-certificates python3-dev git wget sudo ninja-build
+pip install --user tensorboard cmake
+pip install --user torch==1.10 torchvision==0.11.1 -f https://download.pytorch.org/whl/cu111/torch_stable.html
+export FORCE_CUDA="1"
+export TORCH_CUDA_ARCH_LIST="Kepler;Kepler+Tesla;Maxwell;Maxwell+Tegra;Pascal;Volta;Turing"
+export TORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST}"
+export CC=/usr/bin/gcc-10
+export CXX=/usr/bin/g++-10
+export CUDA_ROOT=/usr/local/cuda
+pip install -e  .   
+```
+
+
+# Below did not work for me
+
 ## Installation
 
 ### Requirements
@@ -139,7 +158,7 @@ Two possibilities:
   To check whether it is the case,
   use `python -m detectron2.utils.collect_env` to find out inconsistent CUDA versions.
   In the output of this command, you should expect "Detectron2 CUDA Compiler", "CUDA_HOME", "PyTorch built with - CUDA"
-  to contain cuda libraries of the same version.
+  to contain cuda libraries of the same version.onda create -n samenv python=3.6 -y 
 
   When they are inconsistent,
   you need to either install a different build of PyTorch (or build by yourself)
